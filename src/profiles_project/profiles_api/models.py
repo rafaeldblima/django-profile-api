@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from . import managers
 
 # Create your models here.
-class UserProfile(AbstractBaseUser, PermissionsMixin):
+class UserProfile(AbstractBaseUser, PermissionsMixin, models.Model):
     """Represents a 'user profile' inside our system."""
 
     email = models.EmailField(max_length=255, unique=True)
@@ -25,5 +25,5 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         return self.name
 
     def __str__(self):
-        return '{self.name} - {self.email}'
+        return self.email
 
